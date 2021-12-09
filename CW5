@@ -1,0 +1,250 @@
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+
+
+int main() {
+    double x, res;
+    int n;
+    cout << "x=" ;
+    cin >> x;
+    cout << "n=" ;
+    cin >> n;
+    res = x;
+    for (int i = 0; i < n; i++) {
+        res = sin(res);
+    }
+    cout <<"Result = " << res << endl;
+    return 0;
+}
+
+///////////////////////////
+
+#include <iostream>
+#include <cstdio>
+using namespace std;
+
+
+int main() {
+
+    int i,n;
+    int f = 1;
+    cout << "n=" ;
+    cin >> n;
+    cout << "n! = ";
+    for (i = 1; i < n; i++) {
+        cout << i << '*';
+        f *= i;
+    }
+    f *= i;
+    cout << i << " = " << f << endl;
+
+    return 0;
+}
+
+//////////////////////////
+
+#include <iostream>
+using namespace std;
+
+
+double clca(int n,double x) {
+    double resa, doda;
+    resa = 1;
+    doda = 1;
+    for (int i = 0; i < n; i++) {
+        doda *= x;
+        resa += doda;
+    }
+    return resa;
+
+}
+double clcb(int n,double x, double y) {
+    double resb, dodb;
+    resb = 1;
+    dodb = 1;
+    for (int i = 0; i < n; i++) {
+        dodb *= x;
+        dodb *= x;
+        dodb *= y;
+        resb += dodb;
+    }
+    return resb;
+}
+
+int main() {
+    cout<<"a)\n" <<"Result = "<< clca(3, 2) << endl;
+    cout<<"b)\n" <<"Result = "<< clcb(4,1,2)<<endl;
+    return 0;
+
+}
+
+///////////////////////////
+
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    double sum = 0;
+    double x,k;
+    int n;
+    cout<<"x=";
+    cin >> x;
+    cout<<"n=";
+    cin >> n;
+    k=1;
+    for (int i=1; i<=n; i++) {
+        k *=x;
+        sum = sum + i * k;
+    }
+    cout << "Result = "<< sum << endl;
+    return 0;
+}
+
+///////////////////////
+
+#include <iostream>
+using namespace std;
+
+int fact(int n)
+{
+    int f = 1;
+    if(n%2==0)
+    {
+        for(int i=2; i<=n; i+=2)
+        {
+            f*=i;
+        }
+    }
+    else
+    {
+        for(int i=1; i<=n; i+=2)
+        {
+            f*=i;
+        }
+    }
+    return f;
+}
+int main() {
+    int n;
+    cout << "n = ";
+    cin >> n;
+    cout << "n!!= " << fact(n) << endl;
+    return 0;
+}
+
+/////////////////////
+
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+int main()
+{
+    double resa = sqrt(2);
+    int na;
+    cout <<"na=";
+    cin >> na;
+    if (na>0){
+        for (int i=1; i<na; i++) {
+            resa = sqrt(2 + resa);
+        }
+        cout<<"a)\n"<< "Result = "<< resa << endl;
+    }
+    else{
+        cout << "no result " <<endl;
+    }
+
+    return 0;
+}
+
+///////////////////////
+
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    int n,f=1;
+    double x, k, sum;
+    cout<<"n=";
+    cin>>n;
+    cout<<"x=";
+    cin>>x;
+    sum = 1;
+    k=1;
+    if (x>-1 and x<1 and n>=0){
+        for (int i=1; i<n ; i++){
+            k*=x;
+            f*=i;
+            cout<<"k=\n"<<k<<endl<<"f=\n"<<f<<endl;
+            sum = sum +k/f;
+        }
+        cout<<"Result = "<<sum<<endl;
+    }
+    else
+        cout<<"Run the program again and enter the correct values";
+}
+
+////////////////////////////
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main()
+{
+    int m, k=0;
+    cout << "m=" ;
+    cin >> m;
+    while (pow(4, k) <= m) {
+        k++;
+    }
+    k--;
+    cout << "k = "<< k << endl;
+    return 0;
+}
+
+////////////////////////////
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+float myf(int n){
+    int r=0, result = 1;
+    while (result <= n){
+        result *= 2;
+        r += 1;
+    }
+    cout<<"2^"<<r<<"\n";
+    return pow(2,r);
+}
+
+int main() {
+    int n;
+    cout<<"n=";
+    cin >> n;
+    cout <<"Result = "<< myf(n) << endl;
+    return 0;
+}
+
+////////////////////////
+
+#include <iostream>
+using namespace std;
+
+int main(){
+    [[maybe_unused]] int n;
+    float a;
+    a=1;
+    while(1 + a != 1){
+        a /= 2;
+    }
+
+    cout<<"Machine zero:"<<a;
+    return 0;
+}
+
