@@ -1,0 +1,67 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+    int a, b, c, x;
+    cout << "x=" ;
+    cin >> x;
+    if ( x<=999 ) {
+        a = (x / 100)%10;
+        b = (x / 10)%10;
+        c = (x / 1)%10;
+        cout << "a)Number of units = " << c <<endl;
+        cout << "Number of tens= " << b <<endl;
+        cout << "Number of hundreds = " << a <<endl;
+        cout << "b)Sum of digits = " << a+b+c <<endl;
+        cout << "c)The number formed when reading a given number from right to left = " << c*100 + b*10 + a <<endl;
+    }
+    return 0;
+
+}
+
+////////////////////////////
+
+#include <stdio.h>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+
+
+    int x,a,b,c;
+    scanf("%d",&x);
+    a=x%10;
+    b=(x/10)%10;
+    c=(x/100)%10;
+    //printf("%f", a);
+    if (a==b==c)
+        printf("All numbers are same");
+    else
+    {
+        printf("%d\n", a * 100 + b * 10 + c);
+        printf("%d\n", a * 100 + c * 10 + b);
+        printf("%d\n", c * 100 + a * 10 + b);
+        printf("%d\n", b * 100 + a * 10 + c);
+        printf("%d\n", b * 100 + c * 10 + a);
+    }
+    return 0;
+}
+
+///////////////////////////////////////
+
+#include <stdio.h>
+#include <cmath>
+int main()
+{
+    long long int a,b,c;
+    scanf("%lld, %lld, %lld",&a,&b,&c);
+    printf("a)\n");
+    if (std::abs(a) >= pow(2, 10) || std::abs(b) >= pow(2, 10) || std::abs(c) >= pow(2, 10))
+        printf("Condition rejected\n");
+    else
+        printf("%lld", a * b * c);
+    return 0;
+}
