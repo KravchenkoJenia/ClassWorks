@@ -1,0 +1,134 @@
+#include <iostream>
+#include <string>
+
+namespace MM {
+template<typename T>
+T max(T a, T b){
+    if(a>b) 
+        return a;
+    return b;
+}
+}
+
+int main() {
+    int a=3,b=4;
+    int x=MM::max(a, b);
+    std::cout<<x<<std::endl;
+    long long unsigned a1=6L,b1=7L;
+    long long unsigned x1=MM::max(a1, b1);
+    std::cout<<x1<<std::endl;
+    std::string s1("aaaa");
+    std::string s2("bbbb");
+    std::string s=MM::max(s1, s2);
+    std::cout<<s<<std::endl;
+    return 0;
+}
+
+/////////////////////////
+
+#include <iostream>
+#include <stack>
+using namespace std;
+
+template<class T>
+struct Node {
+    Node<T>* next;
+    T item;
+};
+
+template<class T>
+class MyStack {
+private:
+    int _size;
+    Node<T>* head;
+public:
+    MyStack(): _size(0), head(nullptr) {}
+    ~MyStack() {
+        while (!empty())
+            pop();
+    }
+    bool empty() {return head == nullptr;}
+    int size() {return _size;}
+    T top() {
+        if (empty())
+            throw logic_error("Stack is empty");
+        return head->item;
+    }
+    void pop() {
+        if (empty())
+            throw logic_error("Stack is empty");
+        Node<T>* node = head;
+        head = node->next;
+        delete node;
+        _size--;
+    }
+    void push(T item) {
+        Node<T>* node = new Node<T>();
+        node->item = item;
+        node->next = head;
+        head = node;
+        _size++;
+    }
+};
+
+int main() {
+    stack<int> stl_stack;
+    MyStack<int> my_stack;
+    for (int i = 0; i < 10; i++) {
+        stl_stack.push(i);
+        cout << stl_stack.top() << ends;
+    }
+    cout << endl;
+    for (int i = 0; i < 10; i++) {
+        my_stack.push(i);
+        cout << my_stack.top() << ends;
+    }
+    cout << endl << endl;
+
+    while (!stl_stack.empty()) {
+        cout << stl_stack.top() << ends;
+        stl_stack.pop();
+    }
+    cout << endl;
+    while (!my_stack.empty()) {
+        cout << my_stack.top() << ends;
+        my_stack.pop();
+    }
+    return 0;
+}
+
+//////////////////////////////
+
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+int vvod(std::vector<double> & v, int d){
+    double x;
+    for(int i=0;i<d;++i){
+        std::cin>>x;
+        v.push_back(x);
+    }
+    return d;
+}
+
+double norma(const std::vector<double> & v){
+    double s=0;
+    for(int i=0;i<v.size();++i){
+        s += v[i]*v[i];
+    }
+    return sqrt(s);
+}
+
+int main(){
+    int d,n;
+    std::cin>>d;
+    std::cin>>n;
+    double s=0;
+    std::vector<double> v1;
+    for(int i=0;i<n;++i){
+        vvod(v1,d);
+        s += norma(v1);
+    }
+    std::cout<<"s="<<s;
+}
