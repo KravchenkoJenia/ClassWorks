@@ -1,0 +1,119 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+string f1(const string& s) {
+    int i = s.find(":");
+    if (i == -1)
+        return string(s);
+    int j = s.find(",", i);
+    if (j == -1)
+        return string(s, i + 1);
+    return s.substr(i + 1, j - i - 1);
+}
+
+void f2(string& s) {
+    int i = s.find(":");
+    if (i == -1)
+        return;
+    int j = s.find(",", i);
+    if (j == -1) {
+        s.erase(0, i + 1);
+        return;
+    }
+    s.erase(j);
+    s.erase(0, i + 1);
+}
+
+int main() {
+    string s;
+    cin >> s;
+    cout << f1(s) << endl;
+    f2(s);
+    cout << s << endl;
+    return 0;
+}
+
+////////////////
+
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+string f(const string &s){
+    string s1 = s;
+    size_t p1 = s.find('.');
+    size_t p2 = s.find('.',p1+1);
+    if(p1==string::npos){
+        while (s1.length()>0 && isspace(s1[0])) {
+            s1=s1.substr(1);
+        }
+        return s1;
+    }
+    if(p2 == string::npos){
+        return s.substr(p1);
+    }
+    return s.substr(0, p1+1) + s.substr(p2, s.length());
+}
+int main() {
+    string s;
+    getline(cin, s);
+    string s1=f(s);
+    cout << s1 << endl;
+    return 0;
+} 
+
+/////////////////////////////////
+
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+
+int f(const string& s) {
+    int count = 0;
+    stringstream ss;
+    ss << s;
+    while (ss.good()) {
+        string word;
+        ss >> word;
+        if (ss.fail())
+            break;
+        if (word.front() == word.back())
+            count++;
+    }
+    return count;
+}
+
+
+int main() {
+    string s;
+    getline(cin, s);
+    cout << endl << " The words starts with the same start letter and end letter equal  " << f(s) << endl;
+    return 0;
+}
+
+//////////////////////////////
+
+#include <iostream>
+#include <string>
+using namespace std;
+void f(string &s){
+    unsigned long long end=s.find(' ');
+    if(s[s.size()-1]!=' '){
+        s.replace(s.size()-1, 1, "");
+    }
+    while (end!=string::npos) {
+        if(s[end-1]!=' '){
+            s.replace(end-1, 1, "");
+        }
+        end=s.find(' ', end+1);
+    }
+    cout<<s;
+}
+int main(){
+    string s;
+    getline(cin, s);
+    f(s);
+}
