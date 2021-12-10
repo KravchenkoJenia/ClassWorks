@@ -1,0 +1,69 @@
+#include <cstdio>
+
+unsigned byteReplace(unsigned n){
+    unsigned m = sizeof(n)*8;
+    unsigned m1 = m-8;
+    return ((n&225)<<m1) | (n>>m1) | (((n>>8)<<(m1-8))>>8);
+}
+int main(){
+    unsigned n;
+    printf("Enter n:");
+    scanf("%u",&n);
+    printf("%x",byteReplace(0x11223344));
+    printf("\n");
+    printf("%x %x\n",n,byteReplace(n));
+}
+
+//////////////
+
+#include <cstdio>
+unsigned OneBit(unsigned n){
+    unsigned m= 0, max = 0;
+    for(int i = 0; i < 32; i++){
+        if((n >> i) & 1){
+            m++;
+        }
+        else{
+            if(m > max){
+                max=m;
+            }
+            m=0;
+        }
+    }
+    return max;
+}
+
+int main(){
+    unsigned n;
+    //n=312;
+    printf("n=");
+    scanf("%u",&n);
+    printf("%u", OneBit(n));
+} 
+
+//////////////////
+
+#include <iostream>
+#include <cstdio>
+#include <bitset>
+using namespace std;
+
+int main()
+    int16_t n = 0b0010001100011000;
+    cout << bitset<16>(n) <<  endl;
+    cout << bitset<16>(~n + 1) <<  endl;
+    cout << bitset<16>(-n) <<  endl;
+    cout << bitset<16>(n & (-n)) <<  endl;
+    return 0;
+}
+
+/////////////////
+
+#include <cstdio>
+#include <cstdint>
+
+int main ()
+{
+    uint16_t x = 0x0001;
+    printf("%s-endian\n", *((uint8_t *) &x) ? "little" : "big");
+}
