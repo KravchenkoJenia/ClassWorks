@@ -1,0 +1,327 @@
+#include <iostream>
+using namespace std;
+
+#define t 3
+
+void Output(int a[t][t]) {
+    int k,n;
+    for (k=0; k<t; k++) {
+        for (n=0; n<t; n++) {
+            cout << a[k][n] <<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+int ChangeEl(int a[t][t], int N, int M) {
+    for (int i=0; i<N; i++) {
+        for (int j=0; j<N; j++) {
+            if (a[i][j] == M)
+                a[i][j] = N;
+        }
+    }
+    return 0;
+}
+
+int main() {
+    int N,M, a[t][t] = {{1, 2, 3},
+                        {4, 5, 6},
+                        {7, 8, 9}};
+    cout << "Enter n = ";
+    cin >> N;
+    cout << "Enter m = ";
+    cin >> M;
+    ChangeEl(a, N, M);
+    cout << "New matrix: \n";
+    Output(a);
+}
+
+/////////////////////
+
+#include <iostream>
+using namespace std;
+
+#define N 3
+
+void Output(int a[N][N]) {
+    int i,j;
+    for (i=0; i<N; i++) {
+        for (j=0; j<N; j++) {
+            cout << a[i][j] <<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+void ReplaceEl(int a[N][N], int i, int j, double m) {
+    a[i][j] = m;
+}
+
+int main() {
+
+    int i,j;
+    double m;
+    int a[N][N] = {{1, 2,3,}, {4,5,6}, {7,8,9} };
+    cout << "Enter i(string, 1<=i<=3) = ";
+    cin >> i;
+    cout << "Enter j(column, 1<=i<=3) = ";
+    cin >> j;
+    cout << "Enter m(replace number, double) = ";
+    cin >> m;
+    Output(a);
+    if ((i<1 or i>3) and (j<1 or  j>3)){
+        cout << "Enter correct string and column" << endl;
+    }
+    else if (i<1 or i>3){
+        cout << "Enter correct string" << endl;
+    }
+    else if (j<1 or  j>3){
+        cout << "Enter correct column " <<endl;
+    }
+    else{
+        ReplaceEl(a, i-1, j-1, m);
+        cout<<"Result: \n";
+        Output(a);
+
+    }
+}
+
+/////////////////
+
+#include <iostream>
+using namespace std;
+
+const int N=20;
+
+void Output(int a[N][N], int n, int m) {
+    int i,j;
+    for (i=0; i<n; i++) {
+        for (j=0; j<m; j++) {
+            cout << a[i][j] <<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+void Input(int a[N][N], int n, int m) {
+    int i,j;
+    for (i=0; i<n; i++) {
+        for (j=0; j<m; j++) {
+            cout<<"a["<<i+1<<"]["<<j+1<<"] = ";
+            cin>>a[i][j];
+        }
+    }
+}
+
+
+
+int main()
+{
+    int n,m;
+    cout<<" Enter number of strings from 1 to 20, n = ";
+    cin>>n;
+    cout<<"Enter number of columns from 1 to 20, m = ";
+    cin>>m;
+    int a[N][N];
+    if ((m<1 or m>20) and (n<1 or n>20)){
+        cout << "Enter correct number of strings and columns";
+    }
+    else if (m<1 or m>20){
+        cout << "Enter correct number of columns";
+    }
+    else if (n<1 or n>20){
+        cout << "Enter correct number of strings ";
+    }
+    else{
+        Input(a,n,m);
+        cout<<"New matrix: \n" <<endl;
+        Output(a,n,m);
+        return 0;
+    }
+
+}
+
+/////////////////////
+
+#include <iostream>
+using namespace std;
+
+const int N=20;
+
+void Output(int a[N][N], unsigned n, unsigned m) {
+    int i,j;
+    for (i=0; i<n; i++) {
+        for (j=0; j<m; j++) {
+            cout << a[i][j] <<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+void Input(int a[N][N], unsigned n, unsigned m) {
+    int i,j;
+    for (i=0; i<n; i++) {
+        cout << "String number " << i + 1 << ":" << endl;
+        for (j=0; j<m; j++) {
+            cout<<"a["<<i+1<<"]["<<j+1<<"] = ";
+            cin>>a[i][j];
+        }
+    }
+}
+
+
+
+int main()
+{
+    int n,m;
+    cout<<" Enter number of strings from 1 to 25, n = ";
+    cin>>n;
+    cout<<"Enter number of columns from 1 to 25, m = ";
+    cin>>m;
+    int a[N][N];
+    if ((m<1 or m>25) and (n<1 or n>25)){
+        cout << "Enter correct number of strings and columns";
+    }
+    else if (m<1 or m>25){
+        cout << "Enter correct number of columns";
+    }
+    else if (n<1 or n>25){
+        cout << "Enter correct number of strings ";
+    }
+    else{
+        Input(a,n,m);
+        cout<<"Matrix: \n" <<endl;
+        Output(a,n,m);
+        return 0;
+    }
+
+}
+
+////////////////////
+
+#include <iostream>
+using namespace std;
+const int N = 100;
+
+void Output(int a[N][N], int n, int m) {
+    int i,j;
+    for (i=0; i<n; i++) {
+        for (j=0; j<m; j++) {
+            cout << a[i][j] <<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+}
+
+void Input(int a[N][N], int n, int m) {
+    int i,j;
+    for (i=0; i<n; i++) {
+        for (j=0; j<m; j++) {
+            cout<<"a["<<i+1<<"]"<<"["<<j+1<<"] = ";
+            cin>>a[i][j];
+        }
+
+    }
+}
+
+void transp(int a[N][N], int n, int m) {
+
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < m; j++) {
+            int x = a[i][j];
+            a[i][j] = a[j][i];
+            a[j][i] = x;
+        }
+    }
+
+}
+
+
+int main()
+{
+    int n,m,a[N][N];
+    cout<<"n = ";
+    cin>>n;
+    cout<<"m = ";
+    cin>>m;
+    if (m<1  and n<1){
+        cout << "Enter correct number of strings and columns";
+    }
+    else if (m<1 ){
+        cout << "Enter correct number of columns";
+    }
+    else if (n<1 ){
+        cout << "Enter correct number of strings ";
+    }
+    else{
+        Input(a,n,m);
+        cout<<"Matrix:"<<endl;
+        transp(a,n,m);
+        Output(a,n,m);
+    }
+    return 0;
+}
+
+/////////////////
+
+#include <iostream>
+using namespace std;
+
+const int M = 100,N = 100;
+
+void Input(int a[N][M], int n, int m) {
+    int i,j;
+    for (i=0; i<n; i++) {
+        for (j=0; j<m; j++) {
+            cout<<"a["<<i+1<<"]"<<"["<<j+1<<"] = ";
+            cin>>a[i][j];
+        }
+
+    }
+}
+int sum(int a[N][M], int n, int m, int k){
+    int s=0;
+    int i, j;
+    for (i=0; i<n; i++){
+        for (j=0; j<m; j++){
+            if ((i - j) == k){
+                s+=a[i][j];
+            }
+        }
+
+    }
+
+    return s;
+}
+
+
+int main()
+{
+    int n,m,k,a[N][M];
+    cout<<"n = ";
+    cin>>n;
+    cout<<"m = ";
+    cin>>m;
+    if ((m<1 or m>100)  and (n<1 or n>100)){
+        cout << "Enter correct number of strings and columns";
+    }
+    else if (m<1 or m>100){
+        cout << "Enter correct number of column";
+    }
+    else if (n<1 or n>100){
+        cout << "Enter correct number of string ";
+    }
+    else{
+        cout<<"k = ";
+        cin>>k;
+        Input(a,n,m);
+        cout<<"Sum = "<<sum(a,n,m,k);
+    }
+
+    return 0;
+}
