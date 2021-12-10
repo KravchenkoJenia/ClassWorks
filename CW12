@@ -1,0 +1,181 @@
+#include <iostream>
+using namespace std;
+
+
+typedef struct {
+    struct {
+        int x, y;
+    } p1, p2;
+} Rectangle;
+
+void Output(Rectangle s) {
+    cout << "(" << s.p1.x << "," << s.p1.y << ")" << endl;
+    cout << "(" << s.p2.x << "," << s.p2.y << ")" << endl;
+}
+
+Rectangle Input() {
+    Rectangle s;
+    cout << "x1 = ";
+    cin >> s.p1.x;
+    cout << "y1 = ";
+    cin >> s.p1.y ;
+    cout<< "x2 = ";
+    cin >> s.p2.x;
+    cout << "y2 = ";
+    cin >> s.p2.y;
+    return s;
+}
+
+int main() {
+    Rectangle t = Input();
+    Output(t);
+    return 0;
+}
+
+////////////////////////////////
+
+#include <iostream>
+using namespace std;
+
+struct ChessField
+{
+    char hor;
+    int vert;
+};
+
+void input(ChessField* ch){
+    do {
+        cout << "Input horizontal coord (a, b, c, d, e, f, g, h): ";
+        cin >> ch->hor;
+    }
+    while (ch->hor > 'h' || ch->hor < 'a');
+
+    do {
+        cout << "Input vertical coord (1, 2, 3, 4, 5, 6, 7, 8): ";
+        cin >> ch->vert;
+    }
+    while (ch->vert > 8 || ch->vert < 1);
+
+}
+
+bool func(ChessField ch1, ChessField ch2)
+{
+    return (ch1.vert - ch2.vert == ch1.hor - ch2.hor) || (ch1.hor == ch2.hor) || (ch1.vert == ch2.vert) ;
+}
+
+int main()
+{
+    ChessField ch1{}, ch2{};
+    input(&ch1);
+    input(&ch2);
+    if (func(ch1, ch2) == 1){
+        cout << "Yes";
+    }
+    else{
+        cout << "No";
+    }
+}
+
+/////////////////////////
+
+#include <iostream>
+using namespace std;
+
+struct Date {
+    int day;
+    int month;
+    int year;
+}
+struct Date Input(){
+    Date a{};
+    cout<<"Enter day: ";
+    cin >> a.day;
+    cout<<"Enter month: ";
+    cin >>a.month;
+    cout<<"Enter year: ";
+    cin >> a.year;
+
+    return a;
+}
+
+void Output(Date a) {
+    cout << a.day << "." << a.month << "."<< a.year << endl;
+}
+
+bool leapYear(int year){
+    return (year%4 == 0 and year%100 != 0 and year%400 == 0);
+}
+
+Date tomorrow(const Date x){
+    int array[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+    Date res=x;
+    if(leapYear(x.year)) array[1]++;
+    if(x.day==array[x.month-1]){
+        if(x.month==12){
+            res.day=1;
+            res.month=1;
+            res.year++;
+            return res;
+        }
+        res.day=1;
+        res.month++;
+        return res;
+    }
+    res.day+=1;
+
+    return res;
+}
+
+Date Day (const Date x){
+    int array[12]={31,28,31,30,31,30,31,31,30,31,30,31};
+    Date res=x;
+    int m = 0, days ;
+    while (m < res.month){
+        if (res.month == 1){
+            days = res.day-1;
+        }
+        else {
+            for (int i = 0; i < m; i++) {
+                days = array[i] + res.day-1;
+            }
+        }
+    m++;
+    }
+    if (days%7==0){
+        cout << "Day of this year is Friday";
+    }
+    else if (days%7==1){
+        cout << "Day of this year is Saturday";
+    }
+
+    else if (days%7==2){
+        cout << "Day of this year is Sunday";
+    }
+
+    else if (days%7==3){
+        cout << "Day of this year is Monday";
+    }
+
+    else if (days%7==4){
+        cout << "Day of this year is Tuesday";
+    }
+
+    else if (days%7==5){
+        cout << "Day of this year is Wednesday";
+    }
+    else if (days%7==6){
+        cout << "Day of this year is Thursday";
+    }
+}
+
+
+int main() {
+
+    Date a = Input();
+    Output(a);
+    a = tomorrow(a);
+    Output(a);
+
+    Day(a);
+    return 0;
+}
