@@ -1,0 +1,127 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int main() {
+    double x, y, z;
+    cout << "Enter x = ";
+    cin >> x;
+    cout << "Enter y = ";
+    cin >> y;
+    z = pow(x, y);
+    cout << fixed << z << endl;
+    cout << scientific << z << endl;
+    return 0;
+}
+
+///////////////////
+
+#include <iostream>
+#include <cstdlib>
+#define N 10000
+using namespace std;
+
+int main() {
+    int i;
+    char str[11];
+    unsigned n=0, mas[N];
+    unsigned long long sum=0L;
+    cout << " Enter a string : " << endl;
+    while (cin.get(str,11)){
+        mas[n]=atol(str);
+        sum+=mas[n];
+        n++;
+
+    }
+    for (i=0; i<n; i++) {
+        cout << " mas[" << i + 1 << "] = " << mas[i] << endl;
+    }
+    cout << " Sum of all arrays = " << sum ;
+    return 0;
+}
+
+//////////////////////
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+using namespace std;
+
+
+int main() {
+    unsigned n;
+    cout << "n = ";
+    cin >> n;
+    cout.precision(3);
+    for (int i = 1; (i <= 19) and (i <= n) ; i++) {
+        cout<<"++++++";
+    }
+    for (int i = 1; i <= 1; i++) {
+        cout << setw(3) << i;
+        cout << " ";
+    }
+    for (int i=2; i<=n; i++) {
+        cout <<setw(6) << i;
+    }
+    cout << endl;
+    for (int i = 1; ( i <= 20) and (i <= n) ; i++) {
+        cout<<"++++++";
+    }
+    cout << endl;
+    for (int i = 1; i <= 1; i++) {
+        cout << setw(3) << sqrt(i);
+        cout << " ";
+    }
+    for (int i = 2; i <=n ; i++) {
+
+        cout << setw(6) << sqrt(i);
+    }
+    cout << endl;
+    for (int i = 1; ( i <= 20) and (i <= n) ; i++) {
+        cout<<"++++++";
+    }
+}
+
+///////////////////
+
+#include <iostream>
+#include <fstream>
+#include <stdlib.h>
+#include <cmath>
+using namespace std;
+
+const char* f1_name = "inp.txt";
+const char* f2_name = "out.txt";
+
+int main() {
+    unsigned n;
+    cin >> n;
+    int* arr = (int*)malloc(sizeof(int)*n);
+
+    for(int i=0;i<n;i++){
+        cout << i+1 << ": ";
+        cin >> arr[i];
+    }
+
+    ifstream f1;
+    f1.open(f1_name);
+
+    double* x = (double*)malloc(sizeof(double)*n);
+    for(int i=0;i<n;i++){
+        if(f1.eof()){
+            cout << "Not enough elements";
+            return -2;
+        }
+
+        f1 >> x[i];
+    }
+    f1.close();
+    ofstream f2;
+    f2.open(f2_name);
+    for(int i=0;i<n;i++){
+        f2 << pow(x[i], arr[i]) << endl;
+    }
+    f2.close();
+
+} 
